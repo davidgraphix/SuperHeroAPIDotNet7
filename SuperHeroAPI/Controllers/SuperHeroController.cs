@@ -26,7 +26,7 @@ namespace SuperHeroAPI.Controllers
         {
             var result = await _SuperHeroService.GetSingleHero(id);
             if (result is null)
-                return NotFound("Hero not founf");
+                return NotFound("Hero not found");
 
             return Ok(result);
         }
@@ -44,7 +44,7 @@ namespace SuperHeroAPI.Controllers
 
             var result = await _SuperHeroService.UpdateHero(id, request);
             if (result is null)
-                return NotFound("Hero not founf");
+                return NotFound("Hero not found");
 
             return Ok(result);
         }
@@ -54,7 +54,7 @@ namespace SuperHeroAPI.Controllers
         {
             var result = await _SuperHeroService.DeleteHero(id);
             if (result is null)
-                return NotFound("Hero not founf");
+                return NotFound("Hero not found");
 
             return Ok(result);
         }
