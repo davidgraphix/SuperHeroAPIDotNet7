@@ -6,25 +6,25 @@ namespace SuperHeroAPI.Services.SuperHeroService
     public class SuperHeroService : ISuperHeroService
     {
 
-        private static List<SuperHero> superHeroes = new List<SuperHero>
-            {
-                new SuperHero
-                {
-                    Id = 1,
-                    Name = "David Smart",
-                    FirstName = "David",
-                    LastName = "Semilore",
-                    Place = "New York City"
-                },
-                 new SuperHero
-                {
-                    Id = 2,
-                    Name = "AbiolaSoft",
-                    FirstName = "Abiola",
-                    LastName = "Olakunle",
-                    Place = "Dallas Texas"
-                 }
-            };
+        //private static List<SuperHero> superHeroes = new List<SuperHero>
+        //    {
+        //        new SuperHero
+        //        {
+        //            Id = 1,
+        //            Name = "David Smart",
+        //            FirstName = "David",
+        //            LastName = "Semilore",
+        //            Place = "New York City"
+        //        },
+        //         new SuperHero
+        //        {
+        //            Id = 2,
+        //            Name = "AbiolaSoft",
+        //            FirstName = "Abiola",
+        //            LastName = "Olakunle",
+        //            Place = "Dallas Texas"
+        //         }
+        //    };
 
         public SuperHeroService(DataContext context)
         {
@@ -38,7 +38,7 @@ namespace SuperHeroAPI.Services.SuperHeroService
             _context.SuperHeroes.Add(hero);
             await _context.SaveChangesAsync();
 
-            return superHeroes;
+            return await _context.SuperHeroes.ToListAsync();
         }
 
         public async Task<List<SuperHero>?> DeleteHero(int id)
@@ -50,7 +50,7 @@ namespace SuperHeroAPI.Services.SuperHeroService
             _context.SuperHeroes.Remove(hero);
             await _context.SaveChangesAsync();
 
-            return superHeroes;
+            return await _context.SuperHeroes.ToListAsync();
         }
 
         public async Task<List<SuperHero>> GetAllHeroes()
@@ -83,7 +83,7 @@ namespace SuperHeroAPI.Services.SuperHeroService
 
             await _context.SaveChangesAsync();
 
-            return superHeroes;
+            return await _context.SuperHeroes.ToListAsync();
         }
     }
 }
